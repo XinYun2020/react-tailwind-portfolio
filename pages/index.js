@@ -32,17 +32,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className=" bg-gradient-to-b from-white xto-teal-50 px-10 md:px-20 lg:px-40 dark:from-gray-900 dark:to-gray-500">
-        <section className=" xbg-blue-700 min-h-screen">
-          <nav className="py-10 mb-12 flex justify-between dark:text-white">
+      <main className=" bg-gradient-to-b from-white xto-teal-50 px-10 md:px-20 lg:px-40 dark:from-gray-900 dark:to-gray-500 xrelative">
+        <section className="min-h-screen xrelative">
+          <nav className="bg-gradient-to-b from-white dark:from-gray-900 py-10 mb-12 flex justify-between dark:text-white">
             <h1 className="text-xl font-burtons">DevelopedbyXinyunZhang</h1>
-            <ul className="flex items-center">
-              <li>
-                <BsFillMoonStarsFill
-                  onClick={() => setDarkMode(!darkMode)}
-                  className="cursor-pointer text-2xl"
-                />
-              </li>
+            <ul className="flex items-center ">
               <li>
                 <a
                   className=" font-burtons bg-gradient-to-r  from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-8"
@@ -52,12 +46,10 @@ export default function Home() {
                 </a>
               </li>
               <li>
-                <a
-                  className="font-burtons bg-gradient-to-r  from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-8"
-                  href="#"
-                >
-                  LindedIn
-                </a>
+                <BsFillMoonStarsFill
+                  onClick={() => setDarkMode(!darkMode)}
+                  className="cursor-pointer text-2xl ml-8 fixed"
+                />
               </li>
             </ul>
           </nav>
@@ -87,8 +79,8 @@ export default function Home() {
         </section>
         <section>
           <div>
-            <h3 className=" text-3xl py-1 ">Services I offer</h3>
-            <p className="text-md py-2 leading-8 text-gray-800 xdark:text-gray-200">
+            <h3 className=" text-3xl py-1 dark:text-white">Services I offer</h3>
+            <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
               to be updated with my list of
               <span className="text-teal-500"> skill sets </span>
               including{" "}
@@ -96,7 +88,7 @@ export default function Home() {
               ... and other relevent skills
             </p>
             <div className="lg:flex gap-10">
-              <div className=" text-center shadow-lg p-10 rounded-xl my-10">
+              <div className=" text-center shadow-lg p-10 rounded-xl my-10 dark:bg-white flex-1">
                 <Image src={design} width={100} height={100} />
                 <h3 className="text-lg font-medium pt-8 pb-2">
                   Beautiful Designs
@@ -109,9 +101,9 @@ export default function Home() {
                 <p className=" text-gray-800 py-1">Illustrator</p>
                 <p className=" text-gray-800 py-1">Figma</p>
               </div>
-              <div className=" text-center shadow-lg p-10 rounded-xl my-10">
+              <div className=" text-center shadow-lg p-10 rounded-xl my-10 dark:bg-white flex-1">
                 <Image src={code} width={100} height={100} />
-                <h3 className="text-lg font-medium pt-8 pb-2">Tech Skills</h3>
+                <h3 className="text-lg font-medium pt-8 pb-2 ">Tech Skills</h3>
                 <p className="py-2">
                   Creating elegant designs suited for your needs design theory.
                 </p>
@@ -122,7 +114,7 @@ export default function Home() {
                 <p className=" text-gray-800 py-1">Swift</p>
                 <p className=" text-gray-800 py-1">Python</p>
               </div>
-              <div className=" text-center shadow-lg p-10 rounded-xl my-10">
+              <div className=" text-center shadow-lg p-10 rounded-xl my-10 dark:bg-white flex-1">
                 <Image src={consulting} width={100} height={100} />
                 <h3 className="text-lg font-medium pt-8 pb-2">Experience</h3>
                 <p className="py-2">
@@ -139,7 +131,7 @@ export default function Home() {
 
         <section>
           <div>
-            <h3 className=" text-3xl py-1">Portfolio</h3>
+            <h3 className=" text-3xl py-1  dark:text-white ">Portfolio</h3>
             <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
               Since the beginning of my journey as a freelance designer and
               developer, I've done remote work for
