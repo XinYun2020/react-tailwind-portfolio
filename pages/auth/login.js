@@ -68,13 +68,13 @@ export default function Login() {
             <FcGoogle className=" text-2xl" />
             Sign in with Google
           </button>
-          <button
+          {/* <button
             onClick={FacebookLogin}
             lassName=" text-white bg-gray-700 p-4 w-full font-medium rounded-lg flex align-middle gap-2"
           >
             <AiFillFacebook className=" text-2xl text-blue-400" />
             Sign in with Facebook
-          </button>
+          </button> */}
         </div>
       </div>
     </>
