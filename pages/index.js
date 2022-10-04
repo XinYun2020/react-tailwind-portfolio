@@ -1,13 +1,6 @@
 import Head from "next/head";
 import { BsFillMoonStarsFill } from "react-icons/bs";
-import {
-  AiFillTwitterCircle,
-  AiFillLinkedin,
-  AiFillYoutube,
-  AiFillGithub,
-  AiFillWechat,
-  AiFillInstagram,
-} from "react-icons/ai";
+import { AiFillLinkedin, AiFillGithub, AiFillWechat } from "react-icons/ai";
 import Image from "next/image";
 import deved from "../public/dev-ed-wave.png";
 import design from "../public/design.png";
@@ -22,7 +15,7 @@ import web6 from "../public/web6.png";
 import { useState } from "react";
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(false); // TODO: Context for darkMode
   return (
     // darkMode class
     <div className={darkMode ? "dark" : ""}>
@@ -33,26 +26,26 @@ export default function Home() {
       </Head>
 
       <main className=" bg-gradient-to-b from-white xto-teal-50 px-10 md:px-20 lg:px-40 dark:from-gray-900 dark:to-gray-500 xrelative">
+        <nav className="bg-gradient-to-b from-white dark:from-gray-900 py-10 mb-12 flex justify-between dark:text-white">
+          <h1 className="text-xl font-burtons">DevelopedbyXinyunZhang</h1>
+          <ul className="flex items-center ">
+            <li>
+              <a
+                className=" font-burtons bg-gradient-to-r  from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-8"
+                href="#"
+              >
+                Resume
+              </a>
+            </li>
+            <li>
+              <BsFillMoonStarsFill
+                onClick={() => setDarkMode(!darkMode)}
+                className="cursor-pointer text-2xl ml-8 fixed"
+              />
+            </li>
+          </ul>
+        </nav>
         <section className="min-h-screen xrelative">
-          <nav className="bg-gradient-to-b from-white dark:from-gray-900 py-10 mb-12 flex justify-between dark:text-white">
-            <h1 className="text-xl font-burtons">DevelopedbyXinyunZhang</h1>
-            <ul className="flex items-center ">
-              <li>
-                <a
-                  className=" font-burtons bg-gradient-to-r  from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-8"
-                  href="#"
-                >
-                  Resume
-                </a>
-              </li>
-              <li>
-                <BsFillMoonStarsFill
-                  onClick={() => setDarkMode(!darkMode)}
-                  className="cursor-pointer text-2xl ml-8 fixed"
-                />
-              </li>
-            </ul>
-          </nav>
           <div className=" text-center p-10 ">
             <h2 className=" text-5xl py-2 text-teal-600 font-medium  dark:text-teal-400 md:text-6xl">
               Xinyun Zhang
@@ -67,11 +60,13 @@ export default function Home() {
             </p>
           </div>
           <div className=" text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400">
-            {/* <AiFillTwitterCircle /> */}
-            <AiFillInstagram />
-            <AiFillLinkedin />
-            {/* <AiFillYoutube /> */}
-            <AiFillGithub href="https://github.com/XinYun2020" />
+            <a href="https://github.com/XinYun2020">
+              <AiFillGithub className="cursor-pointer" />
+            </a>
+            <a href="https://www.linkedin.com/in/xinyun2020/">
+              <AiFillLinkedin />
+            </a>
+            <AiFillWechat />
           </div>
           <div className="relative mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 mt-20 overflow-hidden shadow-lg md:h-96 md:w-96">
             <Image src={deved} layout="fill" objectFit="cover" />
