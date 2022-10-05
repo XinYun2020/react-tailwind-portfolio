@@ -10,6 +10,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../utils/firebase";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import TicTacToe from "../../components/TicTacToe";
 
 export default function Login() {
   const [user, loading] = useAuthState(auth);
@@ -76,6 +77,9 @@ export default function Login() {
             Sign in with Facebook
           </button> */}
         </div>
+      </div>
+      <div className=" shadow-xl mt-32 p-10 text-gray-700 rounded-lg mx-auto xw-96  ">
+        <TicTacToe />
       </div>
     </>
   );
