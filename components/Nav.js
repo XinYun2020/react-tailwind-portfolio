@@ -1,51 +1,41 @@
 import Link from "next/link";
 import Head from "next/head";
-import { BsFillCartFill, BsPersonFill } from "react-icons/bs";
-import { AiOutlineBarcode, AiFillHome } from "react-icons/ai";
-import { GoBell } from "react-icons/go";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../utils/firebase";
 
 export default function Nav() {
-  const hoverStyle = `hover:text-blue-500`;
+  const [user, loading] = useAuthState(auth); // do we have a user
 
-  const NavDropdown = (props) => {
-    return <li className="">dropdowns{props.children}</li>;
-  };
   return (
     <>
-      <nav className="flex justify-between items-center shadow-md px-2">
-        <ul className="flex flex-row gap-3 align-middle ">
-          <li>
-            <Link href={"/"}>TILLIE</Link>
-          </li>
-          <li className="text-lg pt-1">
-            <AiFillHome />
-          </li>
-          <NavDropdown></NavDropdown>
-          <NavDropdown></NavDropdown>
-          <NavDropdown></NavDropdown>
-          <NavDropdown></NavDropdown>
-          <NavDropdown></NavDropdown>
-          <NavDropdown></NavDropdown>
+      <nav className="flex justify-between items-center py-10 xbg-gradient-to-b xfrom-cyan-50">
+        <ul className="flex flex-row gap-4">
+          <Link href={"/"}>Logo</Link>
+          <Link href={"/"}>About me</Link>
         </ul>
-
-        <ul className="flex flex-row gap-6 align-middle text-lg pt-3">
-          <li className={`${hoverStyle} `}>
-            <AiOutlineBarcode />
-          </li>
-          <li>
-            <BsFillCartFill />
-          </li>
-          <li className="relative ">
-            <GoBell />
-            <span className=" absolute -top-3 -right-4 justify-center items-center w-7 h-5 text-xs font-bold text-white bg-red-500 rounded-full border-2 border-white text-sm text-center">
-              10
-            </span>
-          </li>
-
-          <li className="flex flex-row align-middle gap-1 ">
-            <BsPersonFill className=" text-xl" />
-            <span className="my-auto relative -top-1">Alice</span>
-          </li>
+        <ul>
+          {!user && (
+            <Link href={"/auth/login"}>
+              <a className=" font-burtons bg-gradient-to-r  from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-8">
+                Join now
+              </a>
+            </Link>
+          )}
+          {user && (
+            <div className="flex flex-row align-middle gap-4">
+              <h2 className=" font-burtons my-auto">Hi, {user.displayName}</h2>
+              <span className="cursor-pointer">
+                <Link href={"/dashboard"}>
+                  <img
+                    src={user.photoURL}
+                    alt="avatar"
+                    referrerPolicy="no-referrer"
+                    className="rounded-full w-12"
+                  />
+                </Link>
+              </span>
+            </div>
+          )}
         </ul>
       </nav>
     </>
