@@ -1,26 +1,21 @@
-import '../styles/index.scss';
+import "../styles/index.scss";
 import * as NextImage from "next/image";
 
 import React from "react";
 import { addDecorator } from "@storybook/react";
 import { MemoryRouter } from "react-router";
-import { withTests } from '@storybook/addon-jest';
-import results from '../.jest-test-results.json';
+import { withTests } from "@storybook/addon-jest";
+import results from "../.jest-test-results.json";
 
-
-
-addDecorator(story => <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>);
+addDecorator((story) => (
+  <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+));
 
 const OriginalNextImage = NextImage.default;
 
 Object.defineProperty(NextImage, "default", {
   configurable: true,
-  value: (props) => (
-      <OriginalNextImage
-          {...props}
-          unoptimized
-      />
-  ),
+  value: (props) => <OriginalNextImage {...props} unoptimized />,
 });
 
 export const parameters = {
@@ -31,7 +26,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};
 
 export const decorators = [
   withTests({

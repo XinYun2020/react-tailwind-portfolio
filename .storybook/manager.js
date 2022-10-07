@@ -36,10 +36,10 @@ const theme = create({
   inputBorderRadius: 4,
 
   // Brand assets
-  brandTitle: "My Storybook",
-  brandUrl: "https://github.com/XinYun2020/react-tailwind-portfolio",
-  //   brandImage:
-  //     "",
+  brandTitle: "Bootstrap Built w/ Tailwind",
+  brandUrl: "https://manage-hub.georgeandmatilda.com.au/",
+  // brandImage:
+  //   "https://manage-hub.georgeandmatilda.com.au/assets/images/tillie-logistics-logo-menu-condensed.png",
 });
 
 addons.setConfig({
