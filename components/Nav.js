@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Head from "next/head";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../utils/firebase";
 
@@ -16,14 +15,14 @@ export default function Nav() {
         <ul>
           {!user && (
             <Link href={"/auth/login"}>
-              <a className=" font-burtons bg-gradient-to-r  from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-8">
+              <a className="font-burtons bg-gradient-to-r  from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-8">
                 Join now
               </a>
             </Link>
           )}
           {user && (
             <div className="flex flex-row align-middle gap-4">
-              <h2 className=" font-burtons my-auto">Hi, {user.displayName}</h2>
+              <h2 className="font-burtons my-auto">Hi, {user.displayName}</h2>
               <span className="cursor-pointer">
                 <Link href={"/dashboard"}>
                   <img

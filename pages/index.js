@@ -1,20 +1,138 @@
 import Head from "next/head";
-import { BsFillMoonStarsFill } from "react-icons/bs";
-import { AiFillLinkedin, AiFillGithub, AiFillWechat } from "react-icons/ai";
 import Image from "next/image";
-import deved from "../public/dev-ed-wave.png";
-import design from "../public/design.png";
+import { useState } from "react";
+import { AiFillGithub, AiFillLinkedin, AiFillWechat } from "react-icons/ai";
+import { BsFillMoonStarsFill, BsPlusCircleFill } from "react-icons/bs";
+import {
+  FaHashtag,
+  FaMoon,
+  FaRegBell,
+  FaSearch,
+  FaSun,
+  FaUserCircle,
+} from "react-icons/fa";
 import code from "../public/code.png";
 import consulting from "../public/consulting.png";
+import design from "../public/design.png";
+import deved from "../public/dev-ed-wave.png";
 import web1 from "../public/web1.png";
 import web2 from "../public/web2.png";
 import web3 from "../public/web3.png";
 import web4 from "../public/web4.png";
 import web5 from "../public/web5.png";
 import web6 from "../public/web6.png";
-import { useState } from "react";
+import useDarkMode from "../utils/hooks/useDarkMode";
 
 export default function Home() {
+  const TopNavigation = () => {
+    return (
+      <div className="top-navigation">
+        <HashtagIcon />
+        <Title />
+        <ThemeIcon />
+        <Search />
+        <BellIcon />
+        <UserCircle />
+      </div>
+    );
+  };
+
+  const ThemeIcon = () => {
+    const [darkTheme, setDarkTheme] = useDarkMode();
+    const handleMode = () => setDarkTheme(!darkTheme);
+    return (
+      <span onClick={handleMode}>
+        {darkTheme ? (
+          <FaSun size="24" className="top-navigation-icon" />
+        ) : (
+          <FaMoon size="24" className="top-navigation-icon" />
+        )}
+      </span>
+    );
+  };
+
+  const Search = () => (
+    <div className="search">
+      <input className="search-input" type="text" placeholder="Search..." />
+      <FaSearch size="18" className="text-secondary my-auto" />
+    </div>
+  );
+  const BellIcon = () => (
+    <FaRegBell size="24" className="top-navigation-icon" />
+  );
+  const UserCircle = () => (
+    <FaUserCircle size="24" className="top-navigation-icon" />
+  );
+  const HashtagIcon = () => <FaHashtag size="20" className="title-hashtag" />;
+  const Title = () => <h5 className="title-text">tailwind-css</h5>;
+
+  const ContentContainer = () => {
+    return (
+      <div className="content-container">
+        <TopNavigation />
+        <div className="content-list">
+          <Post
+            name="Ada"
+            timestamp="one week ago"
+            text={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit
+            amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem
+            ipsum dolor sit amet consectetur adipisicing elit.`}
+          />
+          <Post
+            name="H.U.N.K"
+            timestamp="Just now"
+            text={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit
+            amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem
+            ipsum dolor sit amet consectetur adipisicing elit.`}
+          />
+        </div>
+        <BottomBar />
+      </div>
+    );
+  };
+
+  const BottomBar = () => (
+    <div className="bottom-bar">
+      <PlusIcon />
+      <input
+        type="text"
+        placeholder="Enter message..."
+        className="bottom-bar-input"
+      />
+    </div>
+  );
+
+  const Post = ({ name, timestamp, text }) => {
+    const seed = Math.round(Math.random() * 100);
+    return (
+      <div className={"post"}>
+        <div className="avatar-wrapper">
+          <img
+            src={`https://avatars.dicebear.com/api/open-peeps/${seed}.svg`}
+            alt=""
+            className="avatar"
+          />
+        </div>
+
+        <div className="post-content">
+          <p className="post-owner">
+            {name}
+            <small className="timestamp">{timestamp}</small>
+          </p>
+          <p className="post-text">{text}</p>
+        </div>
+      </div>
+    );
+  };
+
+  const PlusIcon = () => (
+    <BsPlusCircleFill
+      size="22"
+      className="text-green-500 dark:shadow-lg mx-2 dark:text-primary"
+    />
+  );
   const [darkMode, setDarkMode] = useState(false); // TODO: Context for darkMode
   return (
     // darkMode class
