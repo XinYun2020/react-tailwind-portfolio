@@ -1,4 +1,4 @@
-import Message from "../components/Message";
+import Message from "../components/message";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { auth, db } from "../utils/firebase";
@@ -8,6 +8,8 @@ import {
   doc,
   getDoc,
   onSnapshot,
+  orderBy,
+  query,
   Timestamp,
   updateDoc,
 } from "firebase/firestore";

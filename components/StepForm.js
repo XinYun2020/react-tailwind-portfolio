@@ -21,7 +21,8 @@ export default function StepForm() {
   const [data, setDate] = useState(INITIAL_DATA);
 
   // Partial<> all attributes are optional (we dont want the full initial form data )
-  function updateFields(fields: Partial<FormData>) {
+  function updateFields(fields) {
+    // function updateFields(fields: Partial<FormData>) {
     setDate((prev) => {
       return { ...prev, ...fields }; // take all current value and add in all new values
     });
@@ -43,7 +44,8 @@ export default function StepForm() {
       />,
     ]);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  // function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function onSubmit(e) {
     e.preventDefault();
     if (!isLastStep) return next();
     alert("Successful Account Creation");

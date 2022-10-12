@@ -22,7 +22,7 @@ import {
 } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { GiTicTacToe } from "react-icons/gi";
-import StepForm from "../../components/StepForm";
+// import StepForm from "../../components/StepForm";
 import TicTacToe from "../../components/TicTacToe";
 import { auth } from "../../utils/firebase";
 
@@ -119,8 +119,11 @@ export default function Login() {
         </div>
         {expanded &&
           selections &&
-          selections.map((selection) => (
-            <TopicSelection selection={selection} />
+          selections.map((selection, index) => (
+            <TopicSelection
+              key={index}
+              selection={selection}
+            />
           ))}
       </div>
     );
@@ -271,7 +274,7 @@ export default function Login() {
       text-gray-700 min-w-fit max-w-fit
       "
       >
-        <StepForm />
+        {/* <StepForm /> */}
       </div>
     </div>
   );
