@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React, { useState } from "react";
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import { useMultistepForm } from "../utils/hooks/useMultistepForm";
@@ -42,7 +43,7 @@ export default function StepForm() {
       />,
     ]);
 
-  function onSubmit(e: React.FormEvent<HTMLInputElement>) {
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!isLastStep) return next();
     alert("Successful Account Creation");

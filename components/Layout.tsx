@@ -1,7 +1,7 @@
 import Nav from "./Nav";
 
 /* React component */
-export default function Layout({ children }) {
+export default function Layout({ children }: { children?: any }) {
   return (
     <div className="mx-14 font-plex">
       {/* Nav for all pages */}
