@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         burtons: "burtons",
+        plex: "IBM Plex Mono",
       },
       colors: {
         // metal: "#EEEEEE",

@@ -7,7 +7,6 @@ import {
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import {
   BsFillLightningFill,
   BsGearFill,
@@ -23,47 +22,14 @@ import {
 } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { GiTicTacToe } from "react-icons/gi";
-import { AccountForm } from "../../components/AccountForm";
-import { AddressForm } from "../../components/AddressForm";
+import StepForm from "../../components/StepForm";
 import TicTacToe from "../../components/TicTacToe";
-import { UserForm } from "../../components/UserForm";
 import { auth } from "../../utils/firebase";
-import { useMultistepForm } from "../../utils/hooks/useMultistepForm";
 
-const INITIAL_DATA = {
-  firstName: "",
-  lastName: "",
-  age: "",
-  street: "",
-  city: "",
-  state: "",
-  zip: "",
-  email: "",
-  password: "",
-};
 export default function Login() {
   const [user, loading] = useAuthState(auth);
   const route = useRouter();
 
-  const [data, setDate] = useState(INITIAL_DATA);
-  // Partial<> all attributes are optional (we dont want the full initial form data )
-  function updateFields(fields: Partial<FormData>) {
-    setDate((prev) => {
-      return { ...prev, ...fields }; // take all current value and add in all new values
-    });
-  }
-  const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } =
-    useMultistepForm([
-      <UserForm {...data} updateFields={updateFields} />,
-      <AddressForm {...data} updateFields={updateFields} />,
-      <AccountForm {...data} updateFields={updateFields} />,
-    ]);
-
-  function onSubmit(e: React.FormEvent<HTMLInputElement>) {
-    e.preventDefault();
-    if (!isLastStep) return next();
-    alert("Successful Account Creation");
-  }
   /* SIGN IN WITH GOOGLE */
   const googleProvider = new GoogleAuthProvider();
   const GoogleLogin = async () => {
@@ -109,10 +75,19 @@ export default function Login() {
       <div className="channel-bar shadow-lg">
         <ChannelBlock />
         <div className="channel-container">
-          <Dropdown header="Topics" selections={topics} />
+          <Dropdown
+            header="Topics"
+            selections={topics}
+          />
           {/* <Dropdown header='Topics' selections={['tailwind-css', 'react']} /> */}
-          <Dropdown header="Questions" selections={questions} />
-          <Dropdown header="Random" selections={random} />
+          <Dropdown
+            header="Questions"
+            selections={questions}
+          />
+          <Dropdown
+            header="Random"
+            selections={random}
+          />
         </div>
       </div>
     );
@@ -123,7 +98,10 @@ export default function Login() {
 
     return (
       <div className="dropdown">
-        <div onClick={() => setExpanded(!expanded)} className="dropdown-header">
+        <div
+          onClick={() => setExpanded(!expanded)}
+          className="dropdown-header"
+        >
           <ChevronIcon expanded={expanded} />
           <h5
             className={
@@ -151,15 +129,24 @@ export default function Login() {
   const ChevronIcon = ({ expanded }) => {
     const chevClass = "text-accent text-opacity-80 my-auto mr-1";
     return expanded ? (
-      <FaChevronDown size="14" className={chevClass} />
+      <FaChevronDown
+        size="14"
+        className={chevClass}
+      />
     ) : (
-      <FaChevronRight size="14" className={chevClass} />
+      <FaChevronRight
+        size="14"
+        className={chevClass}
+      />
     );
   };
 
   const TopicSelection = ({ selection }) => (
     <div className="dropdown-selection">
-      <BsHash size="24" className="text-gray-400" />
+      <BsHash
+        size="24"
+        className="text-gray-400"
+      />
       <h5 className="dropdown-selection-text">{selection}</h5>
     </div>
   );
@@ -284,57 +271,7 @@ export default function Login() {
       text-gray-700 min-w-fit max-w-fit
       "
       >
-        <form onSubmit={onSubmit}>
-          <div className="absolute top-4 right-4">
-            {currentStepIndex + 1}/{steps.length}
-          </div>
-          {step}
-          <div className=" mt-1 flex gap-0.5 justify-end">
-            {!isFirstStep && (
-              <button
-                type="button"
-                onClick={back}
-                className=" flex flex-row my-auto border border-gray-200 rounded-md px-2 py-1 
-                bg-gradient-to-b from-white to-gray-100 cursor-pointer hover:to-gray-200"
-              >
-                <BiLeftArrow className=" justify-center mt-1 pr-1" />
-                Back
-              </button>
-            )}
-            <button
-              type="submit"
-              onClick={next}
-              className={`  flex flex-row my-auto border border-gray-200 rounded-md px-2 py-1 
-                bg-gradient-to-b from-white to-gray-100 cursor-pointer hover:to-gray-200 ${
-                  isLastStep
-                    ? "transition-all duration-100 ease-linear ring ring-orange-400 ring-offset-1 ring-opacity-50 hover:ring-0"
-                    : ""
-                }`}
-            >
-              {isLastStep ? (
-                "Finish"
-              ) : (
-                <>
-                  Next <BiRightArrow className=" justify-center mt-1 pl-1" />
-                </>
-              )}
-            </button>
-            {/* {isLastStep ? (
-              <i className="absolute bottom-2 font-burtons text-slate-500 font-semibold hover:text-cyan-700">
-                THE END!
-              </i>
-            ) : (
-              <div
-                onClick={next}
-                className=" flex flex-row my-auto border border-gray-200 rounded-md px-2 py-1 
-                bg-gradient-to-b from-white to-gray-100 cursor-pointer hover:to-gray-200"
-              >
-                Next
-                <BiRightArrow className=" justify-center mt-1 pl-1" />
-              </div>
-            )} */}
-          </div>
-        </form>
+        <StepForm />
       </div>
     </div>
   );

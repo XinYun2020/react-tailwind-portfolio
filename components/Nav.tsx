@@ -4,11 +4,12 @@ import { auth } from "../utils/firebase";
 
 export default function Nav() {
   const [user, loading] = useAuthState(auth); // do we have a user
+  console.log(user);
 
   return (
     <>
       <nav className="flex justify-between items-center py-10 xbg-gradient-to-b xfrom-cyan-50">
-        <ul className="flex flex-row gap-4">
+        <ul className="flex flex-row items-center gap-4">
           <Link href={"/"}>Logo</Link>
           <Link href={"/"}>About me</Link>
         </ul>
@@ -21,18 +22,22 @@ export default function Nav() {
             </Link>
           )}
           {user && (
-            <div className="flex flex-row align-middle gap-4">
-              <h2 className="font-burtons my-auto">Hi, {user.displayName}</h2>
-              <span className="cursor-pointer">
-                <Link href={"/dashboard"}>
-                  <img
-                    src={user.photoURL}
-                    alt="avatar"
-                    referrerPolicy="no-referrer"
-                    className="rounded-full w-12"
-                  />
-                </Link>
-              </span>
+            <div className="flex flex-row items-center align-middle gap-4">
+              <Link href="/post">
+                <button className=" btn-primary">Post</button>
+              </Link>
+
+              <h2 className="font-burtons my-auto">{user.displayName}</h2>
+              {/* <span className="cursor-pointer"> */}
+              <Link href={"/dashboard"}>
+                <img
+                  src={user.photoURL}
+                  alt="avatar"
+                  referrerPolicy="no-referrer"
+                  className="rounded-full w-12 cursor-pointer"
+                />
+              </Link>
+              {/* </span> */}
             </div>
           )}
         </ul>
