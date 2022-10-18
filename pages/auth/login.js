@@ -245,7 +245,11 @@ export default function Login() {
         ></SideBarIconDropdown>
         <Divider></Divider>
       </div>
-      <div className=" shadow-xl mt-32 p-10 text-gray-700 rounded-lg mx-auto w-80 md:w-96">
+      <div
+        className=" shadow-xl mt-32 p-10 text-gray-700 rounded-lg mx-auto w-80 md:w-96
+      bg-white 
+      "
+      >
         <h2 className="text-3xl font-medium">Join Today</h2>
         <div className=" py-4">
           <h3 className=" py-4">Sign in with one of the providers</h3>
@@ -268,14 +272,13 @@ export default function Login() {
         </div>
       </div>
 
-      <div
+      {/* <div
         className=" relative my-32 p-10 rounded-lg mx-auto w-1/2 
       border border-gray-300 shadow-xl 
       text-gray-700 min-w-fit max-w-fit
-      "
-      >
-        {/* <StepForm /> */}
-      </div>
+      "> */}
+      {/* <StepForm /> */}
+      {/* </div> */}
     </div>
   );
 }

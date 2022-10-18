@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { AiFillGithub, AiFillLinkedin, AiFillWechat } from "react-icons/ai";
 import { BsFillMoonStarsFill, BsPlusCircleFill } from "react-icons/bs";
 import {
@@ -156,10 +156,8 @@ export default function Home() {
       className="text-green-500 dark:shadow-lg mx-2 dark:text-primary"
     />
   );
-  const [darkMode, setDarkMode] = useState(false); // TODO: Context for darkMode
   return (
-    // darkMode class
-    <div className={darkMode ? "dark" : ""}>
+    <div>
       <Head>
         <title>Xinyun Zhang Protfolio</title>
         <meta
@@ -172,24 +170,24 @@ export default function Home() {
         />
       </Head>
 
-      <main className=" bg-gradient-to-b from-white xto-teal-50 px-10 md:px-20 lg:px-40 dark:from-gray-900 dark:to-gray-500 xrelative">
+      <main className=" bg-gradient-to-b from-white xto-teal-50 px-10 md:px-20 lg:px-40 dark:from-gray-900 dark:to-gray-500">
         <nav className="bg-gradient-to-b from-white dark:from-gray-900 py-10 mb-12 flex justify-between dark:text-white">
-          <h1 className="text-xl font-burtons">DevelopedbyXinyunZhang</h1>
+          {/* <h1 className="text-xl font-burtons">DevelopedbyXinyunZhang</h1> */}
           <ul className="flex items-center ">
-            <li>
+            {/* <li>
               <a
                 className=" font-burtons bg-gradient-to-r  from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-8"
                 href="#"
               >
                 Resume
               </a>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <BsFillMoonStarsFill
                 onClick={() => setDarkMode(!darkMode)}
                 className="cursor-pointer text-2xl ml-8 fixed"
               />
-            </li>
+            </li> */}
           </ul>
         </nav>
         <section className="min-h-screen xrelative">

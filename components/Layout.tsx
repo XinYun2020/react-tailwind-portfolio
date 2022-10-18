@@ -1,13 +1,16 @@
 import Nav from "./Nav";
+import ThemeProvider from "../contexts/ThemeContext";
 
 /* React component */
-export default function Layout({ children }: { children?: any }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mx-14 font-plex">
+    <>
       {/* Nav for all pages */}
-      <Nav />
-      {/* All other pages */}
-      <main>{children}</main>
-    </div>
+      <ThemeProvider>
+        <Nav />
+        {/* All other pages */}
+        <main>{children}</main>
+      </ThemeProvider>
+    </>
   );
 }

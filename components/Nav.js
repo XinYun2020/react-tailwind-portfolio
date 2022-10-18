@@ -1,22 +1,39 @@
 import Link from "next/link";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../utils/firebase";
 
+export const ThemeContext = React.createContext();
+
 export default function Nav() {
   const [user, loading] = useAuthState(auth); // do we have a user
-  console.log(user);
+
+  // console.log(user);
 
   return (
     <>
-      <nav className="flex justify-between items-center py-10 xbg-gradient-to-b xfrom-cyan-50">
+      <nav className="flex justify-between items-center py-10 ">
         <ul className="flex flex-row items-center gap-4">
-          <Link href={"/"}>Logo</Link>
-          <Link href={"/"}>About me</Link>
+          <Link href={"/"}>
+            <a className="text-xl font-burtons">DevelopedbyXinyunZhang</a>
+          </Link>
+          <Link href={"/"}>
+            <a className="font-burtons align-baseline">About me</a>
+          </Link>
         </ul>
-        <ul>
+
+        <ul className="flex">
+          <Link href={"/resume"}>
+            <a
+              className="btn-primary font-burtons ml-8 text-base"
+              // href="#"
+            >
+              Resume
+            </a>
+          </Link>
           {!user && (
             <Link href={"/auth/login"}>
-              <a className="font-burtons bg-gradient-to-r  from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-8">
+              <a className="btn-primary font-burtons ml-8 text-base">
                 Join now
               </a>
             </Link>
