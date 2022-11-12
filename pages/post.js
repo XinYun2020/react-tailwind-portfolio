@@ -14,7 +14,7 @@ import {
 } from "firebase/firestore";
 import { userAgent } from "next/server";
 import { toast } from "react-toastify";
-import Message from "../components/Message";
+import Message from "../src/components/Message";
 import Link from "next/link";
 
 export default function Post() {
@@ -135,10 +135,7 @@ export default function Post() {
               </p>
             )}
           </div>
-          <button
-            type="submit"
-            className=" btn-primary w-full p-2 xmax-w-md"
-          >
+          <button type="submit" className=" btn-primary w-full p-2 xmax-w-md">
             Submit
           </button>
         </form>
@@ -149,10 +146,7 @@ export default function Post() {
         <Message></Message>
         {allPosts.map((post) => {
           return (
-            <Message
-              {...post}
-              key={post.id}
-            >
+            <Message {...post} key={post.id}>
               <Link href={{ pathname: `/${post.id}`, query: { ...post } }}>
                 <button>
                   {post.comments?.length > 0

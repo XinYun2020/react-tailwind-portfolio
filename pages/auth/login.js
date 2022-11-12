@@ -23,7 +23,7 @@ import {
 import { FcGoogle } from "react-icons/fc";
 import { GiTicTacToe } from "react-icons/gi";
 // import StepForm from "../../components/StepForm";
-import TicTacToe from "../../components/TicTacToe";
+import TicTacToe from "../../src/components/TicTacToe";
 import { auth } from "../../utils/firebase";
 
 export default function Login() {
@@ -75,19 +75,10 @@ export default function Login() {
       <div className="channel-bar shadow-lg">
         <ChannelBlock />
         <div className="channel-container">
-          <Dropdown
-            header="Topics"
-            selections={topics}
-          />
+          <Dropdown header="Topics" selections={topics} />
           {/* <Dropdown header='Topics' selections={['tailwind-css', 'react']} /> */}
-          <Dropdown
-            header="Questions"
-            selections={questions}
-          />
-          <Dropdown
-            header="Random"
-            selections={random}
-          />
+          <Dropdown header="Questions" selections={questions} />
+          <Dropdown header="Random" selections={random} />
         </div>
       </div>
     );
@@ -98,10 +89,7 @@ export default function Login() {
 
     return (
       <div className="dropdown">
-        <div
-          onClick={() => setExpanded(!expanded)}
-          className="dropdown-header"
-        >
+        <div onClick={() => setExpanded(!expanded)} className="dropdown-header">
           <ChevronIcon expanded={expanded} />
           <h5
             className={
@@ -120,10 +108,7 @@ export default function Login() {
         {expanded &&
           selections &&
           selections.map((selection, index) => (
-            <TopicSelection
-              key={index}
-              selection={selection}
-            />
+            <TopicSelection key={index} selection={selection} />
           ))}
       </div>
     );
@@ -132,24 +117,15 @@ export default function Login() {
   const ChevronIcon = ({ expanded }) => {
     const chevClass = "text-accent text-opacity-80 my-auto mr-1";
     return expanded ? (
-      <FaChevronDown
-        size="14"
-        className={chevClass}
-      />
+      <FaChevronDown size="14" className={chevClass} />
     ) : (
-      <FaChevronRight
-        size="14"
-        className={chevClass}
-      />
+      <FaChevronRight size="14" className={chevClass} />
     );
   };
 
   const TopicSelection = ({ selection }) => (
     <div className="dropdown-selection">
-      <BsHash
-        size="24"
-        className="text-gray-400"
-      />
+      <BsHash size="24" className="text-gray-400" />
       <h5 className="dropdown-selection-text">{selection}</h5>
     </div>
   );
@@ -211,7 +187,7 @@ export default function Login() {
         <div onClick={() => setExpanded(!expanded)}>{icon}</div>
         {expanded && props.children && (
           <div
-            className="shadow-xl xmt-32 p-10 text-gray-700 rounded-lg mx-auto absolute right-28 -top-56
+            className="shadow-xl p-10 text-gray-700 rounded-lg mx-auto absolute right-28 -top-56
           duration-300 ease-linear
           "
           >
@@ -247,7 +223,7 @@ export default function Login() {
       </div>
       <div
         className=" shadow-xl mt-32 p-10 text-gray-700 rounded-lg mx-auto w-80 md:w-96
-      bg-white 
+      bg-white
       "
       >
         <h2 className="text-3xl font-medium">Join Today</h2>

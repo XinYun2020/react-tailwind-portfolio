@@ -11,7 +11,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import Message from "../components/Message";
+import Message from "../src/components/Message";
 import { BsTrash2Fill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import Link from "next/link";
@@ -66,10 +66,7 @@ export default function Dashboard() {
         <div>
           {posts.map((post) => {
             return (
-              <Message
-                {...post}
-                key={post.id}
-              >
+              <Message {...post} key={post.id}>
                 <div className="flex gap-4">
                   <button
                     onClick={() => deletePost(post.id)}

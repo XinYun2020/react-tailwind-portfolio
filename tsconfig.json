@@ -103,7 +103,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "components/Nav.js", "utils/hooks/useDarkMode.js", "pages/post.js", "components/StepForm.js", "pages/index.js", "pages/dashboard.js", "pages/auth/login.js", "pages/[slug].js"  ],
+, "src/components/Nav.js", "utils/hooks/useDarkMode.js", "pages/post.js", "src/components/StepForm.js", "pages/index.js", "pages/dashboard.js", "pages/auth/login.js", "pages/[slug].js"  ],
   "exclude": [
     "node_modules"
   ]

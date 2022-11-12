@@ -18,7 +18,9 @@ export const ThemeContext = React.createContext();
 
 export function useTheme() {
   return useContext(ThemeContext);
+  // how to use: const { darkMode, setDarkMode } = useTheme();
 }
+
 export default function ThemeProvider({ initialTheme, children }) {
   const [darkMode, setDarkMode] = useState(getInitialTheme);
 
@@ -43,19 +45,19 @@ export default function ThemeProvider({ initialTheme, children }) {
   //   const { theme, setTheme } = React.useContext(ThemeContext);
 
   return (
-    <ThemeContext.Provider value={(darkMode, setDarkMode)}>
+    <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
       <div className={`${darkMode ? "dark" : ""} `}>
         <div
           className="font-plex px-14 min-h-screen
-          bg-gradient-to-b from-white xto-teal-50 
-          dark:text-white dark:from-gray-900 dark:to-gray-500"
+          bg-gradient-to-b from-white 
+          dark:text-white dark:from-gray-900 dark:to-gray-800 "
         >
-          <button
+          {/* <button
             onClick={() => setDarkMode(!darkMode)}
-            className="cursor-pointer text-2xl right-16 top-28 fixed"
+            className="cursor-pointer text-2xl right-16 top-28 fixed z-50"
           >
             <BsFillMoonStarsFill />
-          </button>
+          </button> */}
           {children}
         </div>
       </div>
