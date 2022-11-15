@@ -10,9 +10,6 @@ import {
   FaSun,
   FaUserCircle,
 } from "react-icons/fa";
-import code from "../public/code.png";
-import consulting from "../public/consulting.png";
-import design from "../public/design.png";
 import deved from "../public/dev-ed-wave.png";
 import web1 from "../public/web1.png";
 import web2 from "../public/web2.png";
@@ -21,21 +18,9 @@ import web4 from "../public/web4.png";
 import web5 from "../public/web5.png";
 import web6 from "../public/web6.png";
 import useDarkMode from "../utils/hooks/useDarkMode";
+import { skills } from "../src/constant";
 
 export default function Home() {
-  const TopNavigation = () => {
-    return (
-      <div className="top-navigation">
-        <HashtagIcon />
-        <Title />
-        <ThemeIcon />
-        <Search />
-        <BellIcon />
-        <UserCircle />
-      </div>
-    );
-  };
-
   const ThemeIcon = () => {
     const [darkTheme, setDarkTheme] = useDarkMode();
     const handleMode = () => setDarkTheme(!darkTheme);
@@ -63,34 +48,6 @@ export default function Home() {
     <FaUserCircle size="24" className="top-navigation-icon" />
   );
   const HashtagIcon = () => <FaHashtag size="20" className="title-hashtag" />;
-  const Title = () => <h5 className="title-text">tailwind-css</h5>;
-
-  const ContentContainer = () => {
-    return (
-      <div className="content-container">
-        <TopNavigation />
-        <div className="content-list">
-          <Post
-            name="Ada"
-            timestamp="one week ago"
-            text={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem
-            ipsum dolor sit amet consectetur adipisicing elit.`}
-          />
-          <Post
-            name="H.U.N.K"
-            timestamp="Just now"
-            text={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem
-            ipsum dolor sit amet consectetur adipisicing elit.`}
-          />
-        </div>
-        <BottomBar />
-      </div>
-    );
-  };
 
   const BottomBar = () => (
     <div className="bottom-bar">
@@ -125,12 +82,6 @@ export default function Home() {
     );
   };
 
-  const PlusIcon = () => (
-    <BsPlusCircleFill
-      size="22"
-      className="text-green-500 dark:shadow-lg mx-2 dark:text-primary"
-    />
-  );
   return (
     <div>
       <Head>
@@ -177,9 +128,10 @@ export default function Home() {
             <AiFillWechat />
           </div>
           <div className="relative mx-auto ">
-            <div className=" absolute top-12 left-36 justify-center align-middle text-[10em] font-bold opacity-10 ">
+            {/* <div className=" absolute top-12 left-36 justify-center align-middle text-[10em] font-bold opacity-10 ">
               Hello World.
-            </div>
+            </div> */}
+
             <div className=" relative mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 mt-20 overflow-hidden shadow-lg md:h-96 md:w-96">
               <Image src={deved} layout="fill" objectFit="cover" />
             </div>
@@ -192,47 +144,30 @@ export default function Home() {
               to be updated with my list of
               <span className="text-teal-500"> skill sets </span>
               including{" "}
-              <span className="text-teal-500">language, frameword. </span>
+              <span className="text-teal-500">language, framework. </span>
               ... and other relevent skills
             </p>
             <div className="lg:flex gap-10">
-              <div className=" text-center shadow-lg p-10 rounded-xl my-10 dark:bg-white flex-1">
-                <Image src={design} width={100} height={100} />
-                <h3 className="text-lg font-medium pt-8 pb-2">
-                  Beautiful Designs
-                </h3>
-                <p className="py-2">
-                  Creating elegant designs suited for your needs design theory.
-                </p>
-                <h4 className=" py-4 text-teal-600">Design tools I use</h4>
-                <p className=" text-gray-800 py-1">Photoshop</p>
-                <p className=" text-gray-800 py-1">Illustrator</p>
-                <p className=" text-gray-800 py-1">Figma</p>
-              </div>
-              <div className=" text-center shadow-lg p-10 rounded-xl my-10 dark:bg-white flex-1">
-                <Image src={code} width={100} height={100} />
-                <h3 className="text-lg font-medium pt-8 pb-2 ">Tech Skills</h3>
-                <p className="py-2">
-                  Creating elegant designs suited for your needs design theory.
-                </p>
-                <h4 className=" py-4 text-teal-600">Language and Framework</h4>
-                <p className=" text-gray-800 py-1">TypeScript</p>
-                <p className=" text-gray-800 py-1">JavaScript</p>
-                <p className=" text-gray-800 py-1">SQL</p>
-                <p className=" text-gray-800 py-1">Swift</p>
-                <p className=" text-gray-800 py-1">Python</p>
-              </div>
-              <div className=" text-center shadow-lg p-10 rounded-xl my-10 dark:bg-white flex-1">
-                <Image src={consulting} width={100} height={100} />
-                <h3 className="text-lg font-medium pt-8 pb-2">Experience</h3>
-                <p className="py-2">
-                  Creating elegant designs suited for your needs design theory.
-                </p>
-                <h4 className=" py-4 text-teal-600">Design tools I use</h4>
-                <p className=" text-gray-800 py-1">Photoshop</p>
-                <p className=" text-gray-800 py-1">Illustrator</p>
-                <p className=" text-gray-800 py-1">Figma</p>
-              </div>
+              {skills.map((skill, i) => (
+                <>
+                  {/* SkillCard */}
+                  <div
+                    className=" text-center shadow-lg p-10 rounded-xl my-10 
+                    dark:text-black  dark:bg-white flex-1"
+                    key={`skills-${i}`}
+                  >
+                    <Image src={skill.image} width={100} height={100} />
+                    <h3 className="text-lg font-medium pt-8 pb-2">
+                      {skill.title}
+                    </h3>
+                    <p className="py-2">{skill.description}</p>
+                    <h4 className=" py-4 text-teal-600">{skill.subTitle}</h4>
+                    {skill.techStack.map((tech, i) => (
+                      <p className=" text-gray-800 py-1">{tech}</p>
+                    ))}
+                  </div>
+                </>
+              ))}
             </div>
           </div>
         </section>

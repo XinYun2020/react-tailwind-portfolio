@@ -14,6 +14,9 @@
 //   shield,
 //   star,
 // } from "../assets";
+import code from "../../public/code.png";
+import consulting from "../../public/consulting.png";
+import design from "../../public/design.png";
 
 export const ME = {
   name: "Xinyun Zhang",
@@ -22,37 +25,71 @@ export const ME = {
   mbti: "ENFJ", // need of courage!
 };
 
+export const skills = [
+  {
+    title: "Beautiful Designs",
+    image: design,
+    description:
+      "Creating elegant designs suited for your needs design theory.",
+    subTitle: "Design tools I use",
+    techStack: ["Photoshop", "Illustrator", "Figma"],
+  },
+  {
+    title: "Tech Skills",
+    image: code,
+    description:
+      "Creating elegant designs suited for your needs design theory.",
+    subTitle: "Language and Framework",
+    techStack: ["TypeScript", "JavaScript", "SQL", "Swift", "Python"],
+  },
+  {
+    title: "Experience",
+    image: consulting,
+    description:
+      "Creating elegant designs suited for your needs design theory.",
+    subTitle: "Language and Framework",
+    techStack: ["Photoshop", "Illustrator", "Figma"],
+  },
+];
+
 export const navLinks = [
   {
     id: "home",
     title: "Home",
+    href: "/",
   },
   {
     id: "aboutme",
     title: "About Me",
+    href: "aboutme",
   },
   {
     id: "sayhi",
     title: "Say Hi",
+    href: "sayhi",
   },
   // right
 
   {
     id: "work",
     title: "Work",
+    href: "work",
   },
   {
     id: "articles",
     title: "Articles",
+    href: "articles",
   },
-  {
-    id: "resume",
-    title: "Resume",
-  },
-  {
-    id: "joinnow",
-    title: "Join Now",
-  },
+  // {
+  //   id: "resume",
+  //   title: "Resume",
+  //   href: "resume",
+  // },
+  // {
+  //   id: "joinnow",
+  //   title: "Join Now",
+  //   href: "/auth/login",
+  // },
 ];
 
 // export const features = [
@@ -194,22 +231,22 @@ export const socialMedia = [
   // follow @xinyun2020
   {
     id: "social-media-1",
-    icon: instagram,
+    // icon: instagram,
     link: "https://www.instagram.com/",
   },
   {
     id: "social-media-2",
-    icon: facebook,
+    // icon: facebook,
     link: "https://www.facebook.com/",
   },
   {
     id: "social-media-3",
-    icon: twitter,
+    // icon: twitter,
     link: "https://www.twitter.com/",
   },
   {
     id: "social-media-4",
-    icon: linkedin,
+    // icon: linkedin,
     link: "https://www.linkedin.com/",
   },
 ];

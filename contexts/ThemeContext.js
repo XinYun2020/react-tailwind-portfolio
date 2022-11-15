@@ -49,9 +49,15 @@ export default function ThemeProvider({ initialTheme, children }) {
       <div className={`${darkMode ? "dark" : ""} `}>
         <div
           className="font-plex px-14 min-h-screen
-          bg-gradient-to-b from-white 
-          dark:text-white dark:from-gray-900 dark:to-gray-800 "
+
+          dark:bg-gray-900
+          dark:text-white 
+
+          "
         >
+          {/* bg-gradient-to-b from-white to-white dark:from-gray-900
+          dark:to-gray-800 */}
+
           {/* <button
             onClick={() => setDarkMode(!darkMode)}
             className="cursor-pointer text-2xl right-16 top-28 fixed z-50"
